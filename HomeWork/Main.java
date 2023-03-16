@@ -19,27 +19,11 @@ public class Main {
     public static void main(String[] args) {
         
         List<Notebook> nbooksList = new ArrayList<>();
+        
         nbListCreator(nbooksList);
-
-        Comparator<Notebook> priceCompare01 = (Notebook o1, Notebook o2) -> 
-            o1.getPrice() - o2.getPrice();
-
-        Comparator<Notebook> priceCompare10 = (Notebook o1, Notebook o2) -> 
-            o2.getPrice() - o1.getPrice();
-
-        ROMnPriceComparator romComparator = new ROMnPriceComparator();
-
-        Collections.sort(nbooksList, priceCompare01);
-        System.out.println("Сортировка по возрастанию цены:\n" + nbooksList + 
-            "\n-------------------------\n");
-
-        Collections.sort(nbooksList, priceCompare10);
-        System.out.println("Сортировка по убыванию цены:\n" + nbooksList + 
-            "\n-------------------------\n");
-
-        Collections.sort(nbooksList, romComparator);
-        System.out.println("Сортировка по объему памяти:\n" + nbooksList + 
-            "\n-------------------------\n");
+        sortByPriceUp(nbooksList);
+        sortByPriceDown(nbooksList);
+        sortByROM(nbooksList);
      
     }
 
@@ -54,7 +38,30 @@ public class Main {
         return nbooksList;
     }
 
-    
+    public static List<Notebook> sortByPriceUp(List<Notebook> nbooksList){
+        Comparator<Notebook> priceCompare01 = (Notebook o1, Notebook o2) -> 
+            o1.getPrice() - o2.getPrice();
+        Collections.sort(nbooksList, priceCompare01);
+        System.out.println("Сортировка по возрастанию цены:\n" + nbooksList + 
+            "\n-------------------------\n");
+        return nbooksList;
+    }
 
+    public static List<Notebook> sortByPriceDown(List<Notebook> nbooksList){
+        Comparator<Notebook> priceCompare01 = (Notebook o1, Notebook o2) -> 
+            o2.getPrice() - o1.getPrice();
+        Collections.sort(nbooksList, priceCompare01);
+        System.out.println("Сортировка по убыванию цены:\n" + nbooksList + 
+            "\n-------------------------\n");
+        return nbooksList;
+    }
+    
+    public static List<Notebook> sortByROM(List<Notebook> nbooksList){
+        ROMnPriceComparator romComparator = new ROMnPriceComparator();
+        Collections.sort(nbooksList, romComparator);
+        System.out.println("Сортировка по объему памяти:\n" + nbooksList + 
+            "\n-------------------------\n");
+        return nbooksList;
+    }
     
 }

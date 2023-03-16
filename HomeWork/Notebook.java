@@ -42,7 +42,7 @@ public class Notebook{
 
     @Override
     public String toString() {
-        return String.format("\nNotebook_%d, %s, %s, ROM %d, HDD %d, price %d", this.idNum,
+        return String.format("\nNotebook_%d, %s, %s, ROM %d, HDD %d, price $%d", this.idNum,
             brand, CPU, ROM, HDD, price);
     }
 
